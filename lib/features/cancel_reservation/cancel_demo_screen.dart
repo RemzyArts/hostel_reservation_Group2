@@ -27,8 +27,8 @@ class _CancelDemoScreenState extends State<CancelDemoScreen> {
   void initState() {
     super.initState();
 
-    // Demo: booked 1 day ago (so cancel is still allowed)
-    final bookedAt = DateTime.now().subtract(const Duration(days: 1));
+    // Demo: set booking time to now so countdown starts immediately
+    final bookedAt = DateTime.now();
 
     reservation = ReservationModel(
       bookingId: "BOOKING_001",
@@ -267,7 +267,8 @@ class _CancelDemoScreenState extends State<CancelDemoScreen> {
                           ? "Cancelled"
                           : canCancel
                               ? "${CancelUtils.formatDuration(timeLeft)} left"
-                              : "Cancel expired",
+                              // the correction made is only on line 271
+                              : "Expired",
                       style: TextStyle(
                         fontSize: 10,
                         color: Colors.white.withOpacity(0.85),
