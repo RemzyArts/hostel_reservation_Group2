@@ -81,9 +81,17 @@ class _CancelDemoScreenState extends State<CancelDemoScreen> {
           setState(() => isCancelling = true);
 
           try {
-            await CancelService.cancelReservation(
-              bookingId: reservation.bookingId,
+            final result = await CancelService().cancelReservation(
+              reservationId: reservation.bookingId,
+              checkInDate: reservation.bookedAt, // or reservation.checkInDate if you have it
             );
+
+            if (result == "success") {
+              // update UI
+            } else {
+              // show error message
+            }
+
 
             if (!mounted) return;
 
