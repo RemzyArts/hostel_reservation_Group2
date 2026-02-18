@@ -4,9 +4,9 @@ class CancelReservationDialog extends StatelessWidget {
   final VoidCallback onConfirmCancel;
 
   const CancelReservationDialog({
-    Key? key,
+    super.key,
     required this.onConfirmCancel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
