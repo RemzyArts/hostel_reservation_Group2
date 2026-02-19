@@ -10,38 +10,42 @@ class CancelReservationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final titleStyle = const TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+    );
+
+    final primaryTextStyle = const TextStyle(fontSize: 16);
+    final noteStyle = TextStyle(
+      fontSize: 14,
+      color: Colors.green.shade700,
+      fontWeight: FontWeight.w600,
+    );
+
     return AlertDialog(
-      title: const Text(
-        'Cancel Reservation?',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
+      title: Text('Cancel Reservation?', style: titleStyle),
+      content: ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: 200),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Are you sure you want to cancel this reservation?',
+              style: primaryTextStyle,
+            ),
+            const SizedBox(height: 12),
+            Text(
+              'This action cannot be undone.',
+              style: noteStyle,
+            ),
+          ],
         ),
       ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
-            'Are you sure you want to cancel this reservation?',
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 12),
-          Text(
-            'This action cannot be undone.',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
-      ),
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       actions: [
         TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: () => Navigator.of(context).pop(),
           child: const Text(
             'Cancel',
             style: TextStyle(fontSize: 16),
@@ -55,6 +59,10 @@ class CancelReservationDialog extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.green,
             foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
+            ),
           ),
           child: const Text(
             'Yes, Cancel Reservation',

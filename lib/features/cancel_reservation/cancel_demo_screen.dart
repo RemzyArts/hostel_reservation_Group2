@@ -143,7 +143,7 @@ class _CancelDemoScreenState extends State<CancelDemoScreen> {
                 padding: const EdgeInsets.all(4),
                 child: Image.network(
                   "https://upload.wikimedia.org/wikipedia/commons/5/5c/University_logo_example.png",
-                  errorBuilder: (_, __, ___) =>
+                  errorBuilder: (_, _, _) =>
                       const Icon(Icons.school, color: Colors.green),
                 ),
               ),
